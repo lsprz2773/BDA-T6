@@ -1,0 +1,13 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Variables de entorno (si tienes en la raíz)
+.env
+.env.local
+
+# Carpetas de volúmenes de Docker (si se generan)
+postgres_data/
