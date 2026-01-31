@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: tarea6_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+      POSTGRES_DB: tarea6_db
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./bd/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./bd/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]  # ← Aquí
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./api
+    container_name: tarea6_api
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: tarea6_db
+      DB_USER: postgres
+      DB_PASSWORD: postgres123
+      PORT: 8080
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./api/src:/app/src
+      - /app/node_modules
+
+  web:
+    build:
+      context: ./web
+    container_name: tarea6_web
+    depends_on:
+      - api
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data:
