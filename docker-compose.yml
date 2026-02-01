@@ -12,6 +12,9 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./bd/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
       - ./bd/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
+      - ./bd/roles.sql:/docker-entrypoint-initdb.d/03-roles.sql
+      - ./bd/reports_vw.sql:/docker-entrypoint-initdb.d/04-reports_vw.sql
+      
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]  # ← Aquí
       interval: 10s
