@@ -5,7 +5,8 @@ import { CategoryCard } from '@/app/components/CategoryCard';
 
 async function getCategorySales(search: string): Promise<CategorySales[]> {
   try {
-    const res = await fetch(`http://localhost:4000/api/sales-category?search=${search}`, {
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    const res = await fetch(`${API_URL}/sales-category?search=${search}`, {
       cache: 'no-store'
     });
     if (!res.ok) throw new Error("Fallo al cargar datos");
