@@ -2,6 +2,7 @@
 
 
 ### VERIFICACION DE LAS VISTAS
+```bash
                     List of relations
  Schema |             Name             | Type |  Owner
 --------+------------------------------+------+----------
@@ -11,6 +12,7 @@
  public | view_top_productos_categoria | view | postgres
  public | view_ventas_por_categoria    | view | postgres
 (5 rows)
+```
 
 ## Trade-offs: SQL vs Next.js
 - **Calculado en SQL:** Se usaron funciones de agregacion (SUM, AVG, COUNT) y porcentajes de participación por categoría en las vistas
