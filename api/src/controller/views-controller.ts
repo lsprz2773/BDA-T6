@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import * as db from '../config/db';
-
+import * as schemas from '../lib/validation-schemas';
 
 export const getVentasPorCategoria = async (req: Request, res: Response) => {
     try {
