@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-export const BarraBusqueda = () => {
+export const SearchBar = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [term, setTerm] = useState(searchParams.get("search") || "");

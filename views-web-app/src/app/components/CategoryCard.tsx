@@ -1,6 +1,6 @@
-import { VentaPorCategoria } from "../../types/venta-por-categoria";
+import { CategorySales } from "../../types/category-sales";
 
-export const CardCategoria = ({ data }: { data: VentaPorCategoria }) => {
+export const CategoryCard = ({ data }: { data: CategorySales }) => {
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-all mb-3 flex flex-col md:flex-row md:items-center justify-between gap-4">
       

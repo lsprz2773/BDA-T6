@@ -1,4 +1,4 @@
-export interface VentaPorCategoria {
+export interface CategorySales {
   nombre_categoria: string;
   total_productos_vendidos: string;
   ingreso_total: string;

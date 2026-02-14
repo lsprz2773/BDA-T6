@@ -1,15 +1,15 @@
 import {ApiResponse} from '@/types/api-response'
-import { VentaPorCategoria } from "@/types/venta-por-categoria";
-import { BarraBusqueda } from '@/app/components/BarraBusqueda';
-import { CardCategoria } from '@/app/components/CardCategoria';
+import { CategorySales } from "@/types/category-sales";
+import { SearchBar } from '@/app/components/SearchBar';
+import { CategoryCard } from '@/app/components/CategoryCard';
 
-async function getVentasPorCategoria(search: string): Promise<VentaPorCategoria[]> {
+async function getCategorySales(search: string): Promise<CategorySales[]> {
   try {
     const res = await fetch(`http://localhost:4000/api/sales-category?search=${search}`, {
       cache: 'no-store'
     });
     if (!res.ok) throw new Error("Fallo al cargar datos");
-    const json: ApiResponse<VentaPorCategoria> = await res.json();
+    const json: ApiResponse<CategorySales> = await res.json();
     return json.data || [];
   } catch (error) {
     console.error(error);
@@ -23,7 +23,7 @@ export default async function VentasPage({
   searchParams: { search?: string };
 }) {
   const query = searchParams.search || "";
-  const data = await getVentasPorCategoria(query);
+  const data = await getCategorySales(query);
 
   return (
     <div className="container mx-auto max-w-5xl p-6">
@@ -32,13 +32,13 @@ export default async function VentasPage({
           <h1 className="text-2xl font-bold text-gray-800">Ventas por Categoría</h1>
           <p className="text-gray-500 text-sm">Reporte detallado de ingresos y volumen.</p>
         </div>
-        <BarraBusqueda />
+        <SearchBar />
       </div>
 
       <div className="flex flex-col gap-2">
         {data.length > 0 ? (
           data.map((item) => (
-            <CardCategoria key={item.nombre_categoria} data={item} />
+            <CategoryCard key={item.nombre_categoria} data={item} />
           ))
         ) : (
           <div className="text-center py-10 bg-gray-50 rounded-lg border border-dashed">
