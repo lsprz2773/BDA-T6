@@ -108,7 +108,7 @@ simplemente pedí la indicación, mas no la respuesta
 - Para tener mas datos en las vistas de Next, mandé de referencia el archivo seed y el archivo schema para que me generara mas registros en el archivo seed, sin
 romper o agregar datos que no existieran
 - Tambien requerí varias explicaciones como funciona `EXPLAIN ANALYZE` ya que es algo confuso de entender
-- Solicité tambien ejemplos del uso de Zod, ejemplos de paginado y uso de funciones usando `use server`
+- Solicité tambien ejemplos del uso de Zod, ejemplos de paginado, uso de funciones usando `use server` y creacion de usuarios dentro de PostgreSQL
 
 
 ## Instalación y Configuración
