@@ -93,6 +93,17 @@ Medidas de seguridad implementadas para proteger la aplicación:
 restantes de la BD
 - **Validación de Input:** Limpieza de todos los parámetros de API con Zod antes de pasarlos a SQL, rechazando caracteres especiales sospechosos y validando tipos de datos
 
+# Bitacora de IA
+
+## Prompts principales (resumen ya que al usar archivos de referencia como esquemas, son mensajes demasiado largos)
+- Debido a que no sabia que views crear, solicité a la IA que me diera 5 views objetivos que me pidieran con lo establecido en la asignación, cabe recalcar que
+simplemente pedí la indicación, mas no la respuesta
+- Mientras iba creando las views, fui mandando mis resultados y pidiendo recomendaciones y mejoras 
+- Para tener mas datos en las vistas de Next, mandé de referencia el archivo seed y el archivo schema para que me generara mas registros en el archivo seed, sin
+romper o agregar datos que no existieran
+- Tambien requerí varias explicaciones como funciona `EXPLAIN ANALYZE` ya que es algo confuso de entender
+- Solicité tambien ejemplos del uso de Zod, ejemplos de paginado y uso de funciones usando `use server`
+
 
 ## Instalación y Configuración
 
