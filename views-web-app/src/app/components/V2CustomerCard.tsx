@@ -8,7 +8,7 @@ const getColorRange = (rango: string) => {
   }
 };
 
-export const CustomerRow = ({ data }: { data: CustomerAnalysis }) => {
+export const CustomerCard = ({ data }: { data: CustomerAnalysis }) => {
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-all mb-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
       

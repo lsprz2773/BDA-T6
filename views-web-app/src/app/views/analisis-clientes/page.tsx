@@ -1,5 +1,5 @@
 import { CustomerFilters } from "@/app/components/CustomerFilters";
-import { CustomerRow } from "@/app/components/V2CustomerCard";
+import { CustomerCard } from "@/app/components/V2CustomerCard";
 import { CustomerAnalysis } from "@/types/customer-analysis";
 import { PaginatedResponse } from "@/types/api-response";
 
@@ -48,7 +48,7 @@ export default async function ClientesPage({
       <div className="flex flex-col gap-2">
         {data.length > 0 ? (
           data.map((client) => (
-            <CustomerRow key={client.nombre_cliente} data={client} />
+            <CustomerCard key={client.nombre_cliente} data={client} />
           ))
         ) : (
           <p className="text-center text-gray-500 py-10">No hay clientes con estos filtros.</p>
