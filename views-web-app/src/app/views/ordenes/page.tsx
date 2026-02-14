@@ -26,11 +26,9 @@ export default function OrdenesPage() {
     loadData();
   }, []);
 
-  // Cálculos derivados
   const totalMoney = data.reduce((acc, item) => acc + Number(item.valor_total), 0);
   const totalCount = data.reduce((acc, item) => acc + Number(item.cantidad_ordenes), 0);
 
-  // Función para obtener color según el estado
   const getStatusColor = (estado: string) => {
     const statusColors: Record<string, string> = {
       'pendiente': 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200',

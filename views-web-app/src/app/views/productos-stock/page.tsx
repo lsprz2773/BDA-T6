@@ -24,7 +24,6 @@ export default function InventarioPage() {
     setLoading(false);
   };
 
-  // Función para obtener color según urgencia
   const getUrgenciaColor = (urgencia: 'Critico' | 'Bajo' | 'Normal') => {
     const urgenciaColors = {
       'Critico': 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200',
@@ -34,7 +33,6 @@ export default function InventarioPage() {
     return urgenciaColors[urgencia];
   };
 
-  // Función para calcular porcentaje de stock
   const getStockPercentage = (actual: number, vendidas: string) => {
     const totalVendidas = Number(vendidas);
     if (totalVendidas === 0) return 100;

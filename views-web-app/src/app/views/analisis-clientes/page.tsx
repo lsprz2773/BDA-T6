@@ -29,7 +29,6 @@ export default function ClientesPage() {
     setLoading(false);
   };
 
-  // Función para obtener color según rango de cliente
   const getRangoColor = (rango: 'VIP' | 'REGULAR' | 'NUEVO') => {
     const rangoColors = {
       'VIP': 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200',

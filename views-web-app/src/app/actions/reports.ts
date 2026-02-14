@@ -20,7 +20,6 @@ async function apiRequest(endpoint: string, params?: Record<string, any>) {
     if (params) {
       Object.keys(params).forEach(key => {
         const value = params[key];
-        // Solo agregar parámetros con valores definidos
         if (value !== undefined && value !== null && value !== '') {
           url.searchParams.append(key, value.toString());
         }
@@ -39,12 +38,12 @@ async function apiRequest(endpoint: string, params?: Record<string, any>) {
 
 export async function getSalesByCategory(input: SalesByCategoryInput) {
   const validated = salesByCategorySchema.parse(input);
-  return apiRequest('sales-by-category', { search: validated.search });
+  return apiRequest('ventas-por-categoria', { search: validated.search });
 }
 
 export async function getCustomerAnalysis(input: CustomerAnalysisInput) {
   const validated = customerAnalysisSchema.parse(input);
-  return apiRequest('customer-analysis', { 
+  return apiRequest('analisis-de-clientes', { 
     search: validated.search,
     rango: validated.rango,
     page: validated.page,
@@ -54,19 +53,19 @@ export async function getCustomerAnalysis(input: CustomerAnalysisInput) {
 
 export async function getLowStock(input: LowStockInput) {
   const validated = lowStockSchema.parse(input);
-  return apiRequest('low-stock', { 
+  return apiRequest('productos-bajo-stock', { 
     search: validated.search,
     urgencia: validated.urgencia
   });
 }
 
 export async function getOrderStatus() {
-  return apiRequest('api/orders-status');
+  return apiRequest('ordenes-estado');
 }
 
 export async function getTopProducts(input: TopProductsInput) {
   const validated = topProductsSchema.parse(input);
-  return apiRequest('top-products', { 
+  return apiRequest('top-productos-categoria', { 
     categoria: validated.categoria,
     min_ingreso: validated.min_ingreso
   });

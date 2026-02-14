@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api', viewsRoutes);
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.API_PORT;
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en puerto ${PORT}`);

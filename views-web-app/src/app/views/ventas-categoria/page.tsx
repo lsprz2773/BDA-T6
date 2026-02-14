@@ -23,7 +23,6 @@ export default function VentasPage() {
     setLoading(false);
   };
 
-  // Calcular totales
   const totalIngresos = data.reduce((acc, item) => acc + Number(item.ingreso_total), 0);
   const totalProductos = data.reduce((acc, item) => acc + Number(item.total_productos_vendidos), 0);
 

@@ -24,7 +24,6 @@ export default function TopProductosPage() {
     setLoading(false);
   };
 
-  // Función para obtener color según ranking
   const getRankingColor = (ranking: string) => {
     const rank = Number(ranking);
     if (rank === 1) return 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200';
