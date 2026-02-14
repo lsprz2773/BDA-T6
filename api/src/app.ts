@@ -1,11 +1,16 @@
-import express, { Application } from 'express';
+import express from 'express';
+import dotenv from 'dotenv';
+import viewsRoutes from './routes/views-routes';
 
-const app: Application = express();
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.json({ message: 'API funcionando' });
-});
+app.use('/api/views', viewsRoutes);
 
-export default app;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});
