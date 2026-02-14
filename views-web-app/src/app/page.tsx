@@ -30,39 +30,31 @@ const dashboardLinks = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6">
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center p-6">
       <div className="max-w-4xl w-full">
         
         <div className="text-center mb-12">
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Vistas disponibles para analisis.
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Dashboard de Reportes
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Vistas disponibles para análisis
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {dashboardLinks.map((link) => (
             <Link 
               key={link.href} 
               href={link.href}
-              className={`
-                group relative overflow-hidden rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl
-                bg-indigo-600 hover:bg-indigo-70 text-white shadow-lg
-              `}
+              className="bg-white dark:bg-slate-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-md transition-all duration-200"
             >
-              <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-white opacity-10 group-hover:scale-150 transition-transform duration-500 ease-in-out" />
-              
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold mb-2">
-                  {link.title}
-                </h3>
-                <p className="text-white/80 text-sm leading-relaxed">
-                  {link.description}
-                </p>
-              </div>
-
-              <div className="absolute bottom-6 right-6 opacity-0 transform translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                →
-              </div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                {link.title}
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {link.description}
+              </p>
             </Link>
           ))}
         </div>

@@ -33,12 +33,6 @@ export default function InventarioPage() {
     return urgenciaColors[urgencia];
   };
 
-  const getStockPercentage = (actual: number, vendidas: string) => {
-    const totalVendidas = Number(vendidas);
-    if (totalVendidas === 0) return 100;
-    return Math.min(100, (actual / totalVendidas) * 100);
-  };
-
   return (
     <main className="min-h-screen py-12 px-4">
       <div className="max-w-6xl mx-auto">
@@ -108,7 +102,7 @@ export default function InventarioPage() {
                     Categoría
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-                    Stock Actual
+                    Stock Disponible
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
                     Vendidas
@@ -123,7 +117,9 @@ export default function InventarioPage() {
               </thead>
               <tbody>
                 {data.map((row, idx) => {
-                  const stockPercentage = getStockPercentage(row.stock_actual, row.unidades_vendidas);
+                  const stockPercentage = row.stock_actual > 0 
+                    ? (row.unidades_restantes / row.stock_actual) * 100 
+                    : 0;
                   
                   return (
                     <tr key={idx} className="border-t dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700">
@@ -135,9 +131,14 @@ export default function InventarioPage() {
                       </td>
                       <td className="px-6 py-3">
                         <div className="flex flex-col gap-1">
-                          <span className="text-gray-700 dark:text-gray-300 font-semibold">
-                            {row.stock_actual} / {row.unidades_restantes}
-                          </span>
+                          <div className="flex items-baseline gap-2">
+                            <span className="text-gray-700 dark:text-gray-300 font-semibold text-lg">
+                              {row.unidades_restantes}
+                            </span>
+                            <span className="text-xs text-gray-500 dark:text-gray-400">
+                              de {row.stock_actual}
+                            </span>
+                          </div>
                           <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
                             <div
                               className={`h-1.5 rounded-full transition-all ${
@@ -147,7 +148,7 @@ export default function InventarioPage() {
                                   ? 'bg-yellow-600' 
                                   : 'bg-green-600'
                               }`}
-                              style={{ width: `${stockPercentage}%` }}
+                              style={{ width: `${Math.max(5, stockPercentage)}%` }}
                             />
                           </div>
                         </div>
