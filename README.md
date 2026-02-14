@@ -93,7 +93,7 @@
 ## Threat Model Mínimo
 Medidas de seguridad implementadas para proteger la aplicación:
 
-- **SQL Injection Prevention:** Fue algo inicial, todas las queries en API routes de Next.js usan queries parametrizadas(`$1`, `$2`) en lugar de concatenación de strings.
+- **SQL Injection Prevention:** Fue algo inicial, todas las queries en la API usan queries parametrizadas(`$1`, `$2`) en lugar de concatenación de strings.
 - **Credenciales Seguras:** Variables de entorno almacenadas en `.env`
 - **Privilegios Mínimos:** Usuario de base de datos creado especialmente con permisos limitados: solo `SELECT` en vistas,sin permisos de ningun tipo en tablas 
 restantes de la BD
