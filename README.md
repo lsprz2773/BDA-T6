@@ -19,6 +19,7 @@
 
 ## Performance Evidence
 ### Evidencia 1: Vista de Análisis de Clientes con Window Function
+```bash
                                                                        QUERY PLAN
 ---------------------------------------------------------------------------------------------------------------------------------------------------------  
  Subquery Scan on view_analisis_de_clientes  (cost=89.95..90.70 rows=60 width=362) (actual time=0.370..0.374 rows=15 loops=1)
@@ -46,11 +47,13 @@
  Planning Time: 3.371 ms
  Execution Time: 0.696 ms
 (24 rows)
+```
 
 **Explicación:** La vista tarda menos de 1 milisegundo en ejecutarse. Procesa 15 clientes con 30 órdenes usando solo 26kB de memoria. El `RANK()` necesita ordenar los datos primero, lo cual es muy rápido porque hay pocos registros.
 
 
 ### Evidencia 2: Vista de Ventas por Categoría
+```bash
                                                                     QUERY PLAN
 --------------------------------------------------------------------------------------------------------------------------------------------------
  WindowAgg  (cost=40.42..42.29 rows=17 width=330) (actual time=0.569..0.583 rows=5 loops=1)
@@ -79,6 +82,7 @@
  Planning Time: 7.585 ms
  Execution Time: 0.747 ms
 (25 rows)
+```
 
 
 **Explicación:** La vista se ejecuta en 0.747ms procesando 5 categorías con 51 productos vendidos. Usa Hash Join para combinar las tablas rápidamente con gasto de  27kB de memoria. El filtro `HAVING` se aplica después del `GROUP BY`, eliminando categorías con pocas ventas.
