@@ -1,6 +1,6 @@
 import { VentaPorCategoria } from "../../types/venta-por-categoria";
 
-export const CategoryRow = ({ data }: { data: VentaPorCategoria }) => {
+export const CardCategoria = ({ data }: { data: VentaPorCategoria }) => {
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-all mb-3 flex flex-col md:flex-row md:items-center justify-between gap-4">
       
