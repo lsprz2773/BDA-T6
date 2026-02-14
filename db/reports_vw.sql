@@ -35,7 +35,6 @@ INNER JOIN ordenes o ON od.orden_id = o.id
 GROUP BY c.nombre
 HAVING SUM(od.subtotal) >= 100;
 
-GRANT SELECT ON view_ventas_por_categoria TO user_views;
 
 
 
@@ -82,7 +81,6 @@ INNER JOIN ordenes o ON u.id = o.usuario_id
 GROUP BY u.id, u.nombre
 ORDER BY ranking;
 
-GRANT SELECT ON view_analisis_de_clientes TO user_views;
 
 
 
@@ -130,7 +128,6 @@ WHERE p.stock < 100
 GROUP BY p.id, p.nombre, c.nombre, p.stock
 ORDER BY p.stock ASC;
 
-GRANT SELECT ON view_productos_bajo_stock TO user_views;
 
 
 
@@ -196,7 +193,6 @@ FROM ordenes_base ob
 GROUP BY ob.estado_traducido
 ORDER BY cantidad_ordenes DESC;
 
-GRANT SELECT ON view_analisis_ordenes_estado TO user_views;
 
 
 
@@ -243,4 +239,3 @@ GROUP BY p.id, p.nombre, c.id, c.nombre
 HAVING COALESCE(SUM(od.cantidad), 0) >= 1
 ORDER BY categoria, ranking_categoria;
 
-GRANT SELECT ON view_top_productos_categoria TO user_views;
